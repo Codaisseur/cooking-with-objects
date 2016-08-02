@@ -362,7 +362,7 @@ end
   end
 ```
 
-###10. test your progress
+###10. test your program
 
 - Open the terminal
 - Run the pizzeria class with ruby `ruby pizzeria.rb`
@@ -392,13 +392,279 @@ end
 
 ## [04] As a waiter. I would like to be able to order a item from the kitchen. So that the guests stop bothering me
 
-Tell the kitchen what the guests would like
-- 
+**Tasks:**
+
+1. add a number to a dish
+2. allow the ordering of food by this number
+3. call the order food after the menu was listed and supply the number of the dish
+4. add a kitchen class
+5. add a method to kitchen so it can receive orders of dishes
+6. let the waiter know about the kitchen
+7. let the kitchen know about the order
+8. test your progress
+9. save your progress
+
+
+### 1. Modify the loop that lists the menu, to also list a number that can be used by a guest
+
+```
+  def list_menu
+    @menu.contents.each_with_index do |dish, index|
+      p "#{index}. #{dish.name}"
+    end
+  end
+```
+
+### 2. Create a method to order food from the kitchen in waiter based on the guests choice
+
+```
+  def order_food(dish)
+		dish = @menu.contents[ choice ]
+	end
+```
+
+this method will assign a dish object to the dish variable.
+
+### 3. Call the order_food method after calling the list_menu method
+
+```
+"Let me get the menu"
+list_menu
+order_food(gets.chomp.to_i)
+```
+
+### 4. create a class for the kitchen
+
+- Create a file `kitchen.rb`
+- Create a class in this new file 
+
+```ruby
+class Kitchen
+end
+```
+
+### 5. Add a method to the kitchen so a order can be sent
+
+```
+def order(dish)
+  p "KITCHEN: Order received for #{dish.name}"
+end
+```
+
+### 6. Let the waiter know about the kitchen
+
+- In the `pizzeria.rb` file add a require for the file containing the kitchen
+- Create a new instance of the `Kitchen` class and assign it to a variable
+
+```
+kitchen = Kitchen.new
+```
+
+- Add the option to `Waiter` to receive a kitchen in its initializer method. Assign this argument to a instance variable
+
+```
+  def initialize(menu, kitchen)
+    @menu = menu
+    @kitchen = kitchen
+  end
+```
+
+- Add the variable kitchen to the initialization of the `Waiter` class.
+
+```
+w = Waiter.new(menu, kitchen)
+```
+
+### 7. Let the kitchen know about the order
+
+- In the `order_food` method of the Waiter class add a call to the order method of the Kitchen
+
+```
+  def order_food(choice)
+		dish = @menu.contents[ choice ]
+    @kitchen.order(dish)
+	end
+```
+
+### 8. test your program
+
+- Open the terminal
+- Run the pizzeria class with ruby `ruby pizzeria.rb`
+- Should display: 
+
+```
+"Good day. Welcome to our lovely restaurant"
+"How can I be of service?"
+"1. Would you like to order a pizza?"
+"2. Would you like to leave?"
+```
+
+- Choose 1
+- Should display: 
+
+```
+"0. Margherita"
+"1. Napoletana"
+"2. Peperoni"
+```
+
+- Choose 2
+- Should display
+
+```
+"KITCHEN: Order received for Peperoni"
+```
+
+### 9. Save your progress
+
+- Open the terminal
+- Add all the files in your project to git `git add .`
+- Commit the files to your local git `git commit -m 'choices'`
+
+
 
 ## [05] As a cook. I would like to know which ingredients I have to use and which amounts. So that the dishes taste nice
 
-Enhance the menu. Add ingredients and their amount to recipes.
-- 
+### 1. Create a class for Ingredient
+
+- Create a file `ingredient.rb`
+- Create a class in this new file
+ 
+### 2. Add a initializer to the ingredient class that can take a name and amount
+
+```ruby
+def initialize name, amount
+  @name = name
+  @amount = amount
+end
+```
+
+### 3. Add constants for the pizza ingredient names
+
+```
+class Ingredient
+
+	TOMATO = "Tomato"
+	DOUGH = "Dough"
+	MOZZARELLA = "Mozzarella"
+	ANCHOVIES = "Anchovies"
+	PEPERONI = "Peperoni"
+	
+	def initialize name, amount
+		@name = name
+		@amount = amount
+	end
+	
+end	
+```	
+
+Constants are used to prevent misspelling.
+	
+
+### 4. When creating a dish, add ingredients
+
+- Add a ingredients list to the initializer of the Dish class
+
+```
+  def initialize(name, ingredients)
+    @name = name
+    @ingredients = ingredients
+  end
+```
+
+- In the menu, where the dishes are initialized, also add ingredients
+
+```
+@menu << Dish.new("Margherita", [
+    Ingredient.new(Ingredient::TOMATO, 3),
+    Ingredient.new(Ingredient::DOUGH, 0.25),
+    Ingredient.new(Ingredient::MOZZARELLA, 0.2)
+  ])
+@menu << Dish.new("Napoletana", [
+    Ingredient.new(Ingredient::TOMATO, 3),
+    Ingredient.new(Ingredient::DOUGH, 0.25),
+    Ingredient.new(Ingredient::MOZZARELLA, 0.2),
+    Ingredient.new(Ingredient::ANCHOVIES, 0.05)
+  ])
+@menu << Dish.new("Peperoni",[
+    Ingredient.new(Ingredient::TOMATO, 3),
+    Ingredient.new(Ingredient::DOUGH, 0.25),
+    Ingredient.new(Ingredient::MOZZARELLA, 0.2),
+    Ingredient.new(Ingredient::PEPERONI, 0.1)
+  ])
+```
+
+### 5. Get the ingredients and its name from a Dish and print it in the kitchen 
+
+- Create a method on the Dish class to return the value in the ingredients instance variable
+
+```ruby
+def ingredients
+  @ingredients
+end
+```
+
+- Create a method for the Ingredient class to return the value in the name instance variable
+
+```ruby
+  def name
+    @name
+  end
+```  
+
+- Improve the order method of the Kitchen class to print a list of ingredients for the dish
+
+```ruby
+def order(dish)
+  p "KITCHEN: Order received for #{dish.name}"
+  p "Im gonna need some:"
+
+  dish.ingredients.each do |ingredient|
+    p "- #{ingredient.name}"
+  end
+end
+```
+
+### 6. test your program
+
+- Open the terminal
+- Run the pizzeria class with ruby `ruby pizzeria.rb`
+- Should display: 
+
+```
+"Good day. Welcome to our lovely restaurant"
+"How can I be of service?"
+"1. Would you like to order a pizza?"
+"2. Would you like to leave?"
+```
+
+- Choose 1
+- Should display: 
+
+```
+"0. Margherita"
+"1. Napoletana"
+"2. Peperoni"
+```
+
+- Choose 1
+- Should display
+
+```
+"KITCHEN: Order received for Napoletana"
+"Im gonna need some:"
+"- Tomato"
+"- Dough"
+"- Mozzarella"
+"- Anchovies"
+```
+
+### 7. Save your progress
+
+- Open the terminal
+- Add all the files in your project to git `git add .`
+- Commit the files to your local git `git commit -m 'choices'`
+
 
 ## [06] As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
 
