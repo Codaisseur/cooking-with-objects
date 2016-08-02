@@ -32,6 +32,8 @@ Tasks:
 4. require the waiter in the pizzeria
 5. make a instance of the waiter in the pizzeria
 6. call the greeting method
+7. test if it all works
+8. save your progress
 
 ### 1. Create a waiter
 - Create a file `waiter.rb`
@@ -61,7 +63,7 @@ end
 
 ### 5. Make a instance of the waiter in the pizzeria
 
-A instance is when we create a object from a class. 
+A instance is when we create a object from a class. You can create a object by calling the constructor method. The constructor method is called `new` and by default takes no arguments 
 
 - Create a new instance of waiter and assign it to a variable `w = Waiter.new`
 
@@ -69,14 +71,70 @@ A instance is when we create a object from a class.
 
 - Call a method on a object by placing it after a dot. Like `object.method`. So to call the greeting method on the object stored in `w` you can call `w.greet_guest`
 
+### 7. Test if it all works
+
+- Open the terminal
+- Run the pizzeria class with ruby `ruby pizzeria.rb`
+- Should display: `"Good day. What can I do for you?"`
+
+### 8. Save your progress
+
+- Open the terminal
+- Add all the files in your project to git `git add .`
+- Commit the files to your local git `git commit -m 'greetings'`
+
 ## As a guest. I would like the waiter to help me. So that I can have a bite to eat
 
 Tasks:
 
-1. Create a method for the waiter to serve_guests. 
+1. Create a method for the waiter to serve_guests.
+ 
+```ruby
+  def serve_guest
+    
+  end
+```
+ 
 2. The serve_guests method should print a list of options for the guests
-3. A guest should be able to choose from the options by their number. 
+
+Add a small menu to the body of the `serve_guest` method. For example
+
+```
+    p "How can I be of service?"
+    p "1. Would you like to order a pizza?"
+    p "2. Would you like to leave?"
+```    
+
+3. A guest should be able to choose from the options by their number.
+
+Call the `gets` method at the bottom of the serve_guest method and cast it to a integer 
+ 
+```ruby
+choice = gets.chomp.to_i  
+``` 
+
 4. After a choice is made, the waiter can take action
+
+- create a method to handle the input of the `gets` method. When we create a method that needs input from another method, you have to add this data to its arguments list. 
+
+```ruby
+def take_order(choice)
+
+end
+```
+
+- call this method instead of assigning the result of gets to a variable
+
+```ruby
+take_order(gets.chomp.to_i)
+```
+
+- if the choice is 1 or 2 or none of these, give appropriate response. To easily do this we can use a switch. A switch is (TODO:)
+
+```
+case choice
+
+
 
 ## As a waiter. I would like to know the menu. So that I can help the guests
 
