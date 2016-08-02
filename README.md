@@ -23,7 +23,7 @@ Lets start by setting up the project:
 - go into the directory
 - initialize a new git repository
 
-## As a guest. I want to be greeted by the waiter when I enter the pizerria. So that I feel like I am welcome.
+## [01] As a guest. I want to be greeted by the waiter when I enter the pizzeria. So that I feel like I am welcome.
 
 Tasks:
 1. create a waiter
@@ -83,7 +83,7 @@ A instance is when we create a object from a class. You can create a object by c
 - Add all the files in your project to git `git add .`
 - Commit the files to your local git `git commit -m 'greetings'`
 
-## As a guest. I would like the waiter to help me. So that I can have a bite to eat
+## [02] As a guest. I would like the waiter to help me. So that I can have a bite to eat
 
 Tasks:
 
