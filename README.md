@@ -133,10 +133,10 @@ take_order(gets.chomp.to_i)
 
 ```
 case choice
+```
 
 
-
-## As a waiter. I would like to know the menu. So that I can help the guests
+## [03] As a waiter. I would like to know the menu. So that I can help the guests
 
 A menu is a combination of recipes. 
 
@@ -145,35 +145,35 @@ A menu is a combination of recipes.
 3. return the list of recipes
 4. let the waiter print the list
 
-## As a waiter. I would like to be able to order a item from the kitchen. So that the guests stop bothering me
+## [04] As a waiter. I would like to be able to order a item from the kitchen. So that the guests stop bothering me
 
 Tell the kitchen what the guests would like
 - 
 
-#As a cook. I would like to know which ingredients I have to use and which amounts. So that the dishes taste nice
+## [05] As a cook. I would like to know which ingredients I have to use and which amounts. So that the dishes taste nice
 
 Enhance the menu. Add ingredients and their amount to recipes.
 - 
 
-## As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
+## [06] As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
 
 Add a storage room and check before a order can be placed. When a dish is prepared, update the stock.
 
-## As a guest. I would like to keep ordering food until there is no stock left or I have had enough. So that I have a good time
+## [07] As a guest. I would like to keep ordering food until there is no stock left or I have had enough. So that I have a good time
 
-## As a waiter. I would like to keep track of the items that a customer orders. So that I can present the bill afterwards.
+## [08] As a waiter. I would like to keep track of the items that a customer orders. So that I can present the bill afterwards.
 
-## As a waiter. I would like to present the bill after a guest is done. So that I can get payed.
+## [09] As a waiter. I would like to present the bill after a guest is done. So that I can get payed.
 
 
 ------------
-## As a waiter. I would like to greet my guests in a way appropriate to the time of day. So that I look distinguished
+## [10] As a waiter. I would like to greet my guests in a way appropriate to the time of day. So that I look distinguished
 
-## As a guest. I would like to be able to order drinks aswell
+## [11] As a guest. I would like to be able to order drinks aswell
 
-## As a waiter. I would like to save all payed bills.
+## [12] As a waiter. I would like to save all payed bills.
 
-## As a guest. I would like to also order pastas
+## [13] As a guest. I would like to also order pastas
 
 
 
