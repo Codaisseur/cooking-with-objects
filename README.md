@@ -25,7 +25,8 @@ Lets start by setting up the project:
 
 ## [01] As a guest. I want to be greeted by the waiter when I enter the pizzeria. So that I feel like I am welcome.
 
-Tasks:
+**Tasks:**
+
 1. create a waiter
 2. add a method to the waiter to greet a guest
 3. create a pizzeria
@@ -85,9 +86,14 @@ A instance is when we create a object from a class. You can create a object by c
 
 ## [02] As a guest. I would like the waiter to help me. So that I can have a bite to eat
 
-Tasks:
+**Tasks:**
 
 1. Create a method for the waiter to serve_guests.
+2. The serve_guests method should print a list of options for the guests
+3. A guest should be able to choose from the options by their number.
+4. After a choice is made, the waiter can take action
+
+### 1. Create a method for the waiter to serve_guests.
  
 ```ruby
   def serve_guest
@@ -95,7 +101,7 @@ Tasks:
   end
 ```
  
-2. The serve_guests method should print a list of options for the guests
+### 2. The serve_guests method should print a list of options for the guests
 
 Add a small menu to the body of the `serve_guest` method. For example
 
@@ -105,7 +111,7 @@ Add a small menu to the body of the `serve_guest` method. For example
     p "2. Would you like to leave?"
 ```    
 
-3. A guest should be able to choose from the options by their number.
+### 3. A guest should be able to choose from the options by their number.
 
 Call the `gets` method at the bottom of the serve_guest method and cast it to a integer 
  
@@ -113,7 +119,7 @@ Call the `gets` method at the bottom of the serve_guest method and cast it to a 
 choice = gets.chomp.to_i  
 ``` 
 
-4. After a choice is made, the waiter can take action
+### 4. After a choice is made, the waiter can take action
 
 - create a method to handle the input of the `gets` method. When we create a method that needs input from another method, you have to add this data to its arguments list. 
 
@@ -139,6 +145,8 @@ case choice
 ## [03] As a waiter. I would like to know the menu. So that I can help the guests
 
 A menu is a combination of recipes. 
+
+**Tasks:**
 
 1. create a class for menu
 2. add a initialize method to the menu to create a array of recipes
