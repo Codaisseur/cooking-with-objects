@@ -1,245 +1,121 @@
-#COOKBOOK
-Lets do some more cooking!
-[img](http://s2.quickmeme.com/img/3c/3ca2955b995c2b02bf1d821a8cf7066c5689eb3e2a4ebc7a80bfdf501290669c.jpg)
+As a <specific user>
+I want < an improvement >
+So that I have < lovely benefits >
 
-We will learn about cooking all the things. Also Object Oriented Programming.
+#[Cooking 101](http://s2.quickmeme.com/img/3c/3ca2955b995c2b02bf1d821a8cf7066c5689eb3e2a4ebc7a80bfdf501290669c.jpg)
 
-What is a Object?
+We will learn today to cook with objects. We will start with creating a list of all objects of a pizzeria. 
 
-A object is a abstract version of a thing like in the real world. Like a recipe. 
-A recipe can be a object. It can be inside a cookbook which is another object.
+Because with objects oriented programming you want your code to work like a pizzeria. 
 
-> A cookbook (sometimes cookery book in Commonwealth English[1] or cook book) is a kitchen reference publication that typically contains a collection of recipes.
+- Waiter: You talk to the waiter. He takes your order, serves the food, checks if you want anything else and eventually you can pay the bill. 
+- Kitchen: In the kitchen the food is prepared.
+- Dish: A dish is a collection of ingredients prepared in a certain order.
+- Menu: A collection of recipes with available ingredients
+- Ingredients: Part of a recipe. 
+- Stock: Amount of ingredients available
+- Storageroom: Holds the stock
 
-Let start by making the cookbook object. 
+Lets start by setting up the project:
 
-## 1.0 It all starts with a class
+- open your terminal
+- create a new directory 
+- go into the directory
+- initialize a new git repository
 
-A object in ruby needs a class. A class is like the blueprint for a object. You create a class in its own file.
-Lets make the cookbook class first.
+## As a guest. I want to be greeted by the waiter when I enter the pizerria. So that I feel like I am welcome.
 
-1. Create a new directory for this exercise
-2. Go to the directory (cd)
-3. Create a file in the new directory (touch cookbook.rb)
-4. Open the directory and its files (atom .)
-5. Add the following content to cookbook.rb
+Tasks:
+1. create a waiter
+2. add a method to the waiter to greet a guest
+3. create a pizzeria
+4. require the waiter in the pizzeria
+5. make a instance of the waiter in the pizzeria
+6. call the greeting method
 
-```ruby
-class Cookbook
+### 1. Create a waiter
+- Create a file `waiter.rb`
+- Create a class in this new file. We create a class like: 
+
+```
+class Waiter
 end
 ```
 
-a. A classname always starts with uppercase. 
-b. A filename is always lowercase
-c. Ruby files always end in `.rb`
-d. Everything after the line of `class Cookbook` and before `end` is the content of the class.
+### 2. Add a method to the waiter to greet a guest
 
-## 1.1 Our first objects
-
-This class in itself is not so use full yet, but let's see how we do something with it.
-Lets create a small script to create a cookbook object.
-
-1. Create a file (touch run.rb)
-2. require the cookbook file `require_relative 'cookbook.rb'`
-3. Create a object and print it `p Cookbook.new`
-4. Run the script
+- add a method greet_guest
+- the method should print a greeting
 
 ```
-$ ruby run.rb
-```
-
-a. We can load other files into our file by using the `require_relative` method of ruby. This loads a ruby file relative to our execution path 
-b. We add the `p` in front of the object creation to have something on the screen.
-c. Creating a new object was done with the `.new` method. This is called a *constructor*.
-
-## 1.2 Lets add a recipe
-
-It would be nice for our cookbook to contain some recipes. We need to create a class again.
-
-1. Create a file `recipe.rb`
-2. Create a class for `Recipe`
-
-```
-class Recipe
+def greet_guest
+	p "Good day. What can I do for you?!"
 end
 ```
 
-3. Add a name to the recipe. We will do this by supplying it in the `.new` method call.
-This way we can do `Recipe.new "Tomato soup"` If you want to use arguments for the .new method, you have to define your own constructor
-Overriding a constructor is done by defining a `initialize` method
-Add the following definition of initialize inside the Recipe class
+### 3. Create a pizzeria
+- create a file `pizzeria.rb`
 
-TODO: This could be a lot easier with a setter
+### 4. Require the waiter in the pizzeria
+- at the top of `pizzeria.rb` add `require './waiter'` to include the file.
 
-```
-  def initialize name
-    p "Created a recipe object for #{name}"
-  end
-```
+### 5. Make a instance of the waiter in the pizzeria
 
-4. Require the recipe in the cookbook. Add `require_relative 'recipe.rb'` on the first line of `cookbook.rb`
-5. Create a method to add a recipe to the cookbook. Inside the cookbook class add 
-  
-```
-  def add_recipe
-    Recipe.new 'Tomato Soup'
-  end
-```
+A instance is when we create a object from a class. 
 
-6. Change the run script to call this method
+- Create a new instance of waiter and assign it to a variable `w = Waiter.new`
 
-```
-cookie = Cookbook.new
-cookie.add_recipe
-```
+### 6. Call the greeting method
 
-7. Run the run script
+- Call a method on a object by placing it after a dot. Like `object.method`. So to call the greeting method on the object stored in `w` you can call `w.greet_guest`
 
-```
-$ ruby run.rb                                                                                                                                                                                           [23:13:00]
-"Created a recipe object for Tomato Soup"
-```  
+## As a guest. I would like the waiter to help me. So that I can have a bite to eat
 
-8. Relax a bit
+Tasks:
 
-a. We created 2 objects now. The recipe and the cookbook.
-b. We can create object by calling the constructor `.new`
-c. A constructor method is named `initialize`
+1. Create a method for the waiter to serve_guests. 
+2. The serve_guests method should print a list of options for the guests
+3. A guest should be able to choose from the options by their number. 
+4. After a choice is made, the waiter can take action
 
-## 1.3 Storing the recipes
-Lets store the recipe in the cookbook by using a array. A array is also a class that is used to create objects.
-The array class and its use can be found online http://ruby-doc.org/core-2.2.0/Array.html
+## As a waiter. I would like to know the menu. So that I can help the guests
 
-1. Inside the cookbook class. Lets create a method that makes a bunch of recipes and stores them in a array. 
+A menu is a combination of recipes. 
 
-```
-def bunch_of_recipes
-  recipes = Array.new
-  recipes << add_recipe
-  recipes << add_recipe
-  recipes << add_recipe
-  recipes << add_recipe
-  p recipes
-end
-```
+1. create a class for menu
+2. add a initialize method to the menu to create a array of recipes
+3. return the list of recipes
+4. let the waiter print the list
 
-a. We can create a array object by calling `.new` on the array class. We dont need to require array, because ruby does that for us.
-b. We can add objects to the array with the `<<` method. 
-c. The add recipe method returns a object. Because we call Recipe.new in it. Ruby automatically returns the last line of a function
-d. The last line of our bunch method prints the contents of the array. It is a bunch of objects.
+## As a waiter. I would like to be able to order a item from the kitchen. So that the guests stop bothering me
 
-## 1.4 Accessing the recipes
-As you saw, you can store objects inside other objects. But where are they stored?
+Tell the kitchen what the guests would like
+- 
 
-1. Lets make a method to print a list of the recipes. Lets call the method `to_s` (like ruby conventions)
-Define this method inside the cookbook class.
+#As a cook. I would like to know which ingredients I have to use and which amounts. So that the dishes taste nice
 
-```ruby
-  def to_s
-    p recipes
-  end
-```
-2. Call this method from our run.rb script. Change `cookie.bunch_of_recipes` to `cookie.to_s`
+Enhance the menu. Add ingredients and their amount to recipes.
+- 
 
-```bash
-$ ruby run.rb                                                                                                                                                                                           [23:49:27]
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-/Users/ben/src/cookbook/cookbook.rb:13:in `to_s': undefined local variable or method `recipes' for #<Cookbook:0x007f9112a2ded8> (NameError)
-	from run.rb:5:in `<main>'
-```
+## As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
 
-You should get a error like similar to this one.
-It says:
+Add a storage room and check before a order can be placed. When a dish is prepared, update the stock.
 
-- on line 14 of file `/Users/ben/src/cookbook/cookbook.rb` 
-- when running the `to_s` method
-- undefined local variable or method `recipes` was encountered
+## As a guest. I would like to keep ordering food until there is no stock left or I have had enough. So that I have a good time
 
-> But wait?!
+## As a waiter. I would like to keep track of the items that a customer orders. So that I can present the bill afterwards.
 
-There is a variable named `recipes` right? And we add recipes to it by calling. So what is happening here?
- 
-> As you maybe saw yesterday already, a variable is private to a method. This means it is only available as long as the method is executed
-
-3. Lets solve this private variable business. We do this by creating a instance variable. A instance variable can be accessed from any other method inside a class.
-3a. Change each occurrence of `recipes` in the `create_a_bunch_of_recipes` method of cookbook to `@recipes` 
-3b. Change the occurrence of `recipes` in the `to_s` of cookbook to `@recipes`
-4. Run the script again
-
-```
-$ ruby run.rb                                                                                                                                                                                           [23:52:27]
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-"Created a recipe object for Tomato Soup"
-[#<Recipe:0x007fa3b4136780>, #<Recipe:0x007fa3b4136640>, #<Recipe:0x007fa3b4136550>, #<Recipe:0x007fa3b4136460>]
-```
-
-a. By using instance variables, you can have variables that keep their value as long as the object exists.
-
-##1.5 Beyond Tomato soup
-
-It would be nice if our cookbook contains more then just tomato soup.
-Lets adjust the add recipe method slightly, so it takes a recipe name as a argument.
-
-1. Add a recipe_name argument to the add_recipe method
-
-```
-def add_recipe recipe_name
-```
-
-2. Use the value of recipe name as the name of the recipe (instead of tomato soup)
-3. When calling the method add_recipe, supply a string for the recipe_name argument:
-
-```
-    @recipes << add_recipe "Chicken soup"
-    @recipes << add_recipe "Tomato soup"
-    @recipes << add_recipe "Spanish omelet"
-    @recipes << add_recipe "Spanish sardines on toast"
-    @recipes << add_recipe "Spanish chicken"
-    @recipes << add_recipe "Mediterranean sardine salad"
-```
-
-##2.0 Search our recipes
-It would be nice if we can search in our collection of recipes. We can do so by adding a search method to the cookbook.
-
-make a search method
-get input from commandline
-loop over all recipes
-run
-name is missing
-add name to recipe class initializer
-run
-add accessor method
-run 
+## As a waiter. I would like to present the bill after a guest is done. So that I can get payed.
 
 
-##2.1 Narrow down the search
-It would be nice if we can get the actual recipe objects
+------------
+## As a waiter. I would like to greet my guests in a way appropriate to the time of day. So that I look distinguished
 
-##2.3 Print the matched recipe
+## As a guest. I would like to be able to order drinks aswell
 
-##3.0 Add ingredients
-A recipe can be a more complicated object
+## As a waiter. I would like to save all payed bills.
 
-##3.1 Add preperation to recipe
-
-##3.2 Search in ingredients
-
-##4.0 Save recipe to file 
-
-
-
-
-
-
-
-
-
-
+## As a guest. I would like to also order pastas
 
 
 

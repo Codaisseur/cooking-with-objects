@@ -1,4 +1,4 @@
-class Recipe
+class Dish
 	def initialize name, price, ingredients
 		@name = name
 		@price = price

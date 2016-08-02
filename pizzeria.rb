@@ -13,6 +13,5 @@ w.greet_guest
 
 while(w.serving?) do 
 	p "Serving: #{w.serving?}"
-	w.inquire_guest
-	w.handle_input(gets.chomp.to_i)
+	w.serve_guests
 end

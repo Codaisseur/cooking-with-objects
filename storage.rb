@@ -1,4 +1,5 @@
 class Storage
+	
 	def initialize
 		@items = [
 			Ingredient.new(Ingredient::TOMATO, 8),
@@ -8,16 +9,17 @@ class Storage
 			Ingredient.new(Ingredient::PEPERONI, 0.3)		
 		]
 	end
-	def fetch ingredients
+	
+	def fetch(ingredients)
 		#find a item in the array
 		ingredients.each do |ingredient|
 			item = @items.detect{|item| item.name == ingredient.name}		
 			item.use ingredient.amount 
 		end
-
-		report
+		stock
 	end
-	def report
+
+	def stock
 		@items.each do |item|
 			p "#{item.name} #{item.amount}"
 		end
