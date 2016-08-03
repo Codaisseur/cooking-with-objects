@@ -44,7 +44,7 @@ end
 
 ### 2. Add a method to the waiter to greet a guest
 
-- add a method greet_guest
+- add a method `greet_guest`
 - the method should print a greeting
 
 ```ruby
@@ -63,13 +63,13 @@ end
 
 ### 5. Make a instance of the waiter in the pizzeria
 
-A instance is when we create a object from a class. You can create a object by calling the constructor method. The constructor method is called `new` and by default takes no arguments 
+A instance is when we create a object from a class. You can create a object by calling the constructor method, `new`, and by default it takes no arguments. 
 
-- Create a new instance of waiter and assign it to a variable `w = Waiter.new`
+- Create a new instance of `Waiter` and assign it to a variable `w = Waiter.new`
 
 ### 6. Call the greeting method
 
-- Call a method on a object by placing it after a dot. Like `object.method`. So to call the greeting method on the object stored in `w` you can call `w.greet_guest`
+- Call a method on a object by placing it after a dot. Like `object.method`. So to call the `greet_guest` method on the object stored in `w` you can call `w.greet_guest`
 
 ### 7. Test if it all works
 
@@ -129,7 +129,7 @@ def take_order(order_number)
 end
 ```
 
-- call this method instead of assigning the result of gets to a variable
+- call the `take_order` method instead of assigning the result of gets to a variable
 
 ```ruby
 take_order(gets.chomp.to_i)
@@ -160,10 +160,15 @@ w.serve_guest
 
 - Open the terminal
 - Run the pizzeria class with ruby `ruby pizzeria.rb`
-- Should display: `"Good day. Welcome to our lovely restaurant"`
-- "How can I be of service?"
-- "1. Would you like to order a pizza?"
-- "2. Would you like to leave?"
+- Should display: 
+
+```
+"Good day. Welcome to our lovely restaurant"`
+"How can I be of service?"
+"1. Would you like to order a pizza?"
+"2. Would you like to leave?"
+```
+
 - Wait for input
 - Exit
 
@@ -229,22 +234,22 @@ end
 
 ###4. Add a initialize method to the dish
 
-- To create a dish with a name, you can use the initialize method again. Add a initialize method (constructor) to the Dish class that takes a dish_name as a argument.
+- To create a `Dish` with a name, you can use the initialize method again. Add a initialize method (constructor) to the `Dish` class that takes a `dish_name` as a argument.
 
 ```ruby
-def initialize(name)
+def initialize(dish_name)
 end
 ```
 
-- Assign the argument of the constructor to a instance variable @name
+- Assign the argument of the constructor to a instance variable `@name`
 
 ```ruby
-def initialize(name)
-  @name = name
+def initialize(dish_name)
+  @name = dish_name
 end
 ```
 
-A instance variable is available to all methods of a class instance (object)
+A *instance variable* is available to all methods of a class instance (object). Unlike a normal variable which is only available inside the method where it was created.
 
 ###5. Create a array of dishes calling its constructor with a name 
 
@@ -285,7 +290,7 @@ menu = Menu.new
 - Add a constructor method to the waiter class that takes a argument for menu.
 - Assign the argument to a instance variable.
  
-```
+```ruby
 def initialize(menu)
   @menu = menu  
 end
@@ -293,14 +298,14 @@ end
 
 - Change the call to the constructor of Waiter in Pizzeria to receive a menu. 
 
-```
+```ruby
 w = Waiter.new(menu)
 ```
 
 
 ###7. let the waiter tell guests the contents of the menu
 
-- define a method in the Menu class to return the value of the instance variable.
+- define a method in the `Menu` class to return the value of the instance variable.
 
 ```ruby
 def contents
@@ -310,12 +315,12 @@ end
 
  
 
-- create a list_menu method in the Waiter class
+- create a `list_menu` method in the `Waiter` class to list all the dishes
 
 ```
 def list_menu
-  @menu.contents.each do |recipe|
-    p "#{recipe}"
+  @menu.contents.each do |dish|
+    p "#{dish}"
   end
 end
 ```
@@ -326,7 +331,7 @@ end
 - Run the pizzeria class with ruby `ruby pizzeria.rb`
 - Should display: 
 
-```
+```bash
 "Good day. Welcome to our lovely restaurant"
 "How can I be of service?"
 "1. Would you like to order a pizza?"
@@ -336,7 +341,7 @@ end
 - Choose 1
 - Should display: 
 
-```
+```bash
 "#<Dish:0x007ff25b058048>"
 "#<Dish:0x007ff25b058160>"
 "#<Dish:0x007ff25b058ae8>"
@@ -346,7 +351,7 @@ end
 
 - add a method to dish to return its name
 
-```
+```ruby
 def name
   @name
 end
@@ -354,12 +359,12 @@ end
 
 - In the loop printing the dishes, call the `name` method to display the name
 
-```
-  def list_menu
-		@menu.contents.each do |recipe|
-			p "#{recipe.name}"
-		end
+```ruby
+def list_menu
+  @menu.contents.each do |recipe|
+    p "#{recipe.name}"
   end
+end
 ```
 
 ###10. test your program
@@ -407,27 +412,27 @@ end
 
 ### 1. Modify the loop that lists the menu, to also list a number that can be used by a guest
 
-```
-  def list_menu
-    @menu.contents.each_with_index do |dish, index|
-      p "#{index}. #{dish.name}"
-    end
+```ruby
+def list_menu
+  @menu.contents.each_with_index do |dish, index|
+    p "#{index}. #{dish.name}"
   end
+end
 ```
 
 ### 2. Create a method to order food from the kitchen in waiter based on the guests choice
 
-```
-  def order_food(dish)
-		dish = @menu.contents[ choice ]
-	end
+```ruby
+def order_food(dish)
+  dish = @menu.contents[ choice ]
+end
 ```
 
 this method will assign a dish object to the dish variable.
 
-### 3. Call the order_food method after calling the list_menu method
+### 3. Call the `order_food` method after calling the `list_menu` method
 
-```
+```ruby
 "Let me get the menu"
 list_menu
 order_food(gets.chomp.to_i)
@@ -445,7 +450,7 @@ end
 
 ### 5. Add a method to the kitchen so a order can be sent
 
-```
+```ruby
 def order(dish)
   p "KITCHEN: Order received for #{dish.name}"
 end
@@ -456,13 +461,13 @@ end
 - In the `pizzeria.rb` file add a require for the file containing the kitchen
 - Create a new instance of the `Kitchen` class and assign it to a variable
 
-```
+```ruby
 kitchen = Kitchen.new
 ```
 
 - Add the option to `Waiter` to receive a kitchen in its initializer method. Assign this argument to a instance variable
 
-```
+```ruby
   def initialize(menu, kitchen)
     @menu = menu
     @kitchen = kitchen
@@ -471,7 +476,7 @@ kitchen = Kitchen.new
 
 - Add the variable kitchen to the initialization of the `Waiter` class.
 
-```
+```ruby
 w = Waiter.new(menu, kitchen)
 ```
 
@@ -479,7 +484,7 @@ w = Waiter.new(menu, kitchen)
 
 - In the `order_food` method of the Waiter class add a call to the order method of the Kitchen
 
-```
+```ruby
   def order_food(choice)
 		dish = @menu.contents[ choice ]
     @kitchen.order(dish)
@@ -525,6 +530,19 @@ w = Waiter.new(menu, kitchen)
 
 ## [05] As a cook. I would like to know which ingredients I have to use and which amounts. So that the dishes taste nice
 
+**Tasks:**
+
+1. create a class for Ingredient
+2. ingredients can have a name and amount
+3. add constants for the ingredient names
+4. When creating a dish, add ingredients
+5. print a list of ingredients and their amount
+6. let the waiter know about the kitchen
+7. let the kitchen know about the order
+8. test your progress
+9. save your progress
+
+
 ### 1. Create a class for Ingredient
 
 - Create a file `ingredient.rb`
@@ -533,7 +551,7 @@ w = Waiter.new(menu, kitchen)
 ### 2. Add a initializer to the ingredient class that can take a name and amount
 
 ```ruby
-def initialize name, amount
+def initialize(name, amount)
   @name = name
   @amount = amount
 end
@@ -541,7 +559,7 @@ end
 
 ### 3. Add constants for the pizza ingredient names
 
-```
+```ruby
 class Ingredient
 
 	TOMATO = "Tomato"
@@ -550,7 +568,7 @@ class Ingredient
 	ANCHOVIES = "Anchovies"
 	PEPERONI = "Peperoni"
 	
-	def initialize name, amount
+	def initialize(name, amount)
 		@name = name
 		@amount = amount
 	end
@@ -565,16 +583,16 @@ Constants are used to prevent misspelling.
 
 - Add a ingredients list to the initializer of the Dish class
 
-```
-  def initialize(name, ingredients)
-    @name = name
-    @ingredients = ingredients
-  end
+```ruby
+def initialize(name, ingredients)
+  @name = name
+  @ingredients = ingredients
+end
 ```
 
 - In the menu, where the dishes are initialized, also add ingredients
 
-```
+```ruby
 @menu << Dish.new("Margherita", [
     Ingredient.new(Ingredient::TOMATO, 3),
     Ingredient.new(Ingredient::DOUGH, 0.25),
@@ -604,12 +622,16 @@ def ingredients
 end
 ```
 
-- Create a method for the Ingredient class to return the value in the name instance variable
+- Create a method for the Ingredient class to return the value in the name instance variable and a method for the amount variable
 
 ```ruby
-  def name
-    @name
-  end
+def name
+  @name
+end
+
+def amount
+  @amount
+end
 ```  
 
 - Improve the order method of the Kitchen class to print a list of ingredients for the dish
@@ -620,12 +642,150 @@ def order(dish)
   p "Im gonna need some:"
 
   dish.ingredients.each do |ingredient|
-    p "- #{ingredient.name}"
+    p "#{ingredient.amount} - #{ingredient.name}"
   end
 end
 ```
 
 ### 6. test your program
+
+- Open the terminal
+- Run the pizzeria class with ruby `ruby pizzeria.rb`
+- Should display: 
+
+```bash
+"Good day. Welcome to our lovely restaurant"
+"How can I be of service?"
+"1. Would you like to order a pizza?"
+"2. Would you like to leave?"
+```
+
+- Choose 1
+- Should display: 
+
+```bash
+"0. Margherita"
+"1. Napoletana"
+"2. Peperoni"
+```
+
+- Choose 1
+- Should display
+
+```bash
+"KITCHEN: Order received for Napoletana"
+"Im gonna need some:"
+"3 - Tomato"
+"0.25 - Dough"
+"0.2 - Mozzarella"
+"0.05 - Anchovies"
+```
+
+### 7. Save your progress
+
+- Open the terminal
+- Add all the files in your project to git `git add .`
+- Commit the files to your local git `git commit -m 'choices'`
+
+
+## [06] As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
+
+Add a storage and check before a order can be placed. When a dish is prepared, update the stock.
+
+### 1. Create a class for Storage
+
+- Create a file `storage.rb`
+- Create a class in this new file
+
+### 2. Add a initialize method to the Storage class that creates stock for a bunch of ingredients
+
+```ruby
+def initialize
+  @items = [
+    Ingredient.new(Ingredient::TOMATO, 8),
+    Ingredient.new(Ingredient::DOUGH, 2),
+    Ingredient.new(Ingredient::MOZZARELLA, 1),
+    Ingredient.new(Ingredient::PEPERONI, 0.3)		
+  ]
+end
+```
+
+### 3. Add a method to decrease the amount of a ingredient to the Ingredient class
+
+```ruby
+  def use(amount)
+		@amount -= amount
+	end
+```
+
+### 4. Add a fetch method to the Storage class
+
+- Create a fetch method that takes a list of ingredients as a argument and checks them out of the storage
+
+```ruby
+def fetch(ingredients)
+  ingredients.each do |ingredient|
+    item = @items.detect{|item| item.name == ingredient.name}
+    item.use ingredient.amount
+  end
+end
+```
+
+### 5. Let the kitchen create a instance of the storage
+
+- require the file which is declaring the storage class in kitchen
+
+```ruby
+require './storage'
+
+class Kitchen
+```
+
+- add a initializer method to the kitchen and create a instance of storage
+
+```ruby
+  def initialize
+    @storage = Storage.new
+  end
+```
+
+### 5. Call the fetch method when a order is placed. Add it to the bottom of the order method of Kitchen
+
+```ruby
+@storage.fetch(dish.ingredients)
+```
+
+### 6. Add a check to the `order_food` method of the `Waiter` class and wrap the order in it.
+
+```ruby
+def order_food(choice)
+		dish = @menu.contents[ choice ]
+    if @kitchen.order(dish)
+      p "Dish is on its way"
+    else
+      p "Sorry this dish is not available"
+    end
+	end
+```
+
+### 7. Change the fetch method of Storage to return a boolean if a dish is not available
+
+The kitchen has the order method which tries to fetch items from the storage. Make it return false if there is no item in the storage
+
+```ruby
+def fetch(ingredients)
+  ingredients.each do |ingredient|
+    item = @items.detect{|item| item.name == ingredient.name}
+    if item
+      item.use ingredient.amount
+    else
+      return false
+    end
+  end
+end
+```
+
+### 8. test your program
 
 - Open the terminal
 - Run the pizzeria class with ruby `ruby pizzeria.rb`
@@ -653,38 +813,111 @@ end
 ```
 "KITCHEN: Order received for Napoletana"
 "Im gonna need some:"
-"- Tomato"
-"- Dough"
-"- Mozzarella"
-"- Anchovies"
+"3 - Tomato"
+"0.25 - Dough"
+"0.2 - Mozzarella"
+"0.05 - Anchovies"
+"Sorry this dish is not available"
 ```
 
-### 7. Save your progress
+### 9. Save your progress
 
 - Open the terminal
 - Add all the files in your project to git `git add .`
 - Commit the files to your local git `git commit -m 'choices'`
 
 
-## [06] As a waiter. I would like to know if a dish can still be ordered. So that I don't try sell unavailable dishes.
+## [07] As a waiter. I would like to keep track of the items that a customer orders. So that I can present the bill afterwards.
 
-Add a storage room and check before a order can be placed. When a dish is prepared, update the stock.
+### 1. Add a class for check
+### 2. Add a initializer method which creates a empty array
 
-## [07] As a guest. I would like to keep ordering food until there is no stock left or I have had enough. So that I have a good time
+ - create a instance variable in the initializer and assign a empty array to it
 
-## [08] As a waiter. I would like to keep track of the items that a customer orders. So that I can present the bill afterwards.
+### 3. Create a method to add items to the check
+
+```ruby
+	def add(item)
+		@items << item
+	end
+```	
+
+### 4. Add a item to the check if it can be ordered
+
+- require the file containing the check class in the waiter class file
+- add a instance variable to the waiter initialize method
+
+```ruby
+@check = Check.new
+```
+
+- call the add method on @check if food can be ordered
+
+```ruby
+@check.add(dish)
+```
+
+### 5. Test && Save
+
+## [08] As a guest. I would like to keep ordering food until there is no stock left or I have had enough. So that I have a good time
+
+### 1. add a method to waiter to check if he is still serving a guest
+
+- add a boolean to the waiter class as a instance variable `@serving`. Add it to the initializer and give it the value of `true`
+- create a method for waiter which returns the value of the boolean
+
+```ruby
+def serving?
+  return @serving
+end
+```
+
+### 2. create a loop for waiter in the pizzeria
+
+```ruby
+while(w.serving?) do
+  w.serve_guest
+end
+```
+
+### 3. stop serving if a guest wants to leave
+
+- in the method `take_order` of Waiter. Set @serving to false if a guest wants to leave.
+ 
+
+### 4. Test && Save
 
 ## [09] As a waiter. I would like to present the bill after a guest is done. So that I can get payed.
 
+### 1. Add a price field to the dish
 
-------------
-## [10] As a waiter. I would like to greet my guests in a way appropriate to the time of day. So that I look distinguished
+- add a price to the arguments of the initializer of the dish class
+- assign the price to a instance variable
+- create a method to return the value of the instance variable
 
-## [11] As a guest. I would like to be able to order drinks aswell
+### 2. Add a price to all the dishes on the menu
 
-## [12] As a waiter. I would like to save all payed bills.
+- in the menu class initializer, add a price for each of the three dishes
+
+### 3. Add a method to check to calculate the sum of all dishes
+
+- create a method on the check class that loops over all items
+- create a local variable sum for this method
+- for each dish in the item loop, add the price to the sum
+- return the value of sum
+- let the waiter call this method and tell the value after saying "Thank you for your visit"
+
+### 4. Test && Save
+
+## [10] As a waiter. I would like the guest not being able to order a non existing dish
+
+## [11] As a waiter. I would like to greet my guests in a way appropriate to the time of day. So that I look distinguished
+
+## [12] As a guest. I would like to be able to order drinks asw ell
 
 ## [13] As a guest. I would like to also order pastas
+
+## [14] As a waiter. I would like to save all payed bills to the disk.
 
 
 

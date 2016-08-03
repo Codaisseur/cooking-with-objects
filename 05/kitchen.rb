@@ -4,7 +4,7 @@ class Kitchen
     p "Im gonna need some:"
 
     dish.ingredients.each do |ingredient|
-      p "- #{ingredient.name}"
+      p "#{ingredient.amount} - #{ingredient.name}"
     end
   end
 end

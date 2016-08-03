@@ -1,7 +1,10 @@
+require './check'
 class Waiter
   def initialize(menu, kitchen)
     @menu = menu
     @kitchen = kitchen
+    @check = Check.new
+    @serving = true
   end
 
   def greet_guest
@@ -24,6 +27,7 @@ class Waiter
         order_food gets.chomp.to_i
       when 2
         "Thank you for your visit"
+        @serving = false
       else
         "I really don't understand"
     end
@@ -40,10 +44,14 @@ class Waiter
 		dish = @menu.contents[ choice ]
     if @kitchen.order(dish)
       p "Dish is on its way"
+      @check.add(dish)
     else
       p "Sorry this dish is not available"
     end
 	end
 
+  def serving?
+    return @serving
+  end
 
 end
