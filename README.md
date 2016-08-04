@@ -17,7 +17,7 @@ Lets start by setting up the project:
 - open your terminal
 - create a new directory 
 - go into the directory
-- initialize a new git repository
+- initialize a new git repository `git init`
 
 ## [01] As a guest. I want to be greeted by the waiter when I enter the pizzeria. So that I feel like I am welcome.
 
@@ -42,14 +42,16 @@ class Waiter
 end
 ```
 
-### 2. Add a method to the waiter to greet a guest
+### 2. Add a method to the Waiter to greet a guest
 
 - add a method `greet_guest`
 - the method should print a greeting
 
 ```ruby
-def greet_guest
+class Waiter
+    def greet_guest
 	p "Good day. Welcome to our lovely restaurant"
+   end
 end
 ```
 
@@ -140,11 +142,11 @@ take_order(gets.chomp.to_i)
 ```ruby
 case order_number
   when 1
-    "Let me get the menu"
+    p "Let me get the menu"
   when 2
-    "Thank you for your visit"
+   p  "Thank you for your visit"
   else
-    "I really don't understand"
+    p "I really don't understand"
 end
 ```
 
@@ -324,6 +326,15 @@ def list_menu
   end
 end
 ```
+- call the `list_menu` method in the case statement
+
+```
+  def take_order(order_number)
+    case order_number
+      when 1
+        "Let me get the menu"
+        list_menu
+```
 
 ###8. test your progress
 
@@ -423,7 +434,7 @@ end
 ### 2. Create a method to order food from the kitchen in waiter based on the guests choice
 
 ```ruby
-def order_food(dish)
+def order_food(choice)
   dish = @menu.contents[ choice ]
 end
 ```
@@ -918,8 +929,3 @@ end
 ## [13] As a guest. I would like to also order pastas
 
 ## [14] As a waiter. I would like to save all payed bills to the disk.
-
-
-
-
-
